@@ -15,10 +15,14 @@ function printSentence(sentence, parentElementId){
     paragraph.appendChild(textNode);
     parentElement.appendChild(paragraph);
 }
-// Fetching elements
-let sentenceItemInput = fetchElementById("sentenceItemInput");
-let sentenceAmountInput = fetchElementById("sentenceNumberInput");
+// Fetching submit button
+let createSentenceSubmitButton = fetchElementById("createSentenceSubmitButton");
 
+// Button eventlistener
+createSentenceSubmitButton.addEventListener("click", function(){
+    let sentenceItemInput = fetchElementById("sentenceItemInput");
+    let sentenceAmountInput = fetchElementById("sentenceNumberInput");
+    
 // Fetching values
 let itemForSentence = fetchInputValue(sentenceItemInput);
 let amountForSentence = fetchInputValue(sentenceAmountInput);
@@ -26,5 +30,9 @@ let amountForSentence = fetchInputValue(sentenceAmountInput);
 // Creating sentence
 let sentence = createSentence(itemForSentence, amountForSentence);
 
+// Fetching display div
+let displaySentenceDiv = fetchElementById("displaySentenceDiv");
+
 // Printing sentence
 printSentence(sentence);
+});

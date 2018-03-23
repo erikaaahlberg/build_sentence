@@ -1,14 +1,30 @@
 function fetchElementById(id){
-    let element = document.getElementById(id);
-    return element;
+    return document.getElementById(id);
 }
 function fetchInputValue(element){
-    let inputValue = element.value;
-    return inputValue;
+    return element.value;
 }
+function createSentence(item, amount){
+    return `There is ${amount} of ${item}`;
+}
+function printSentence(sentence, parentElementId){
+    let parentElement = fetchElementById(parentElementId);
+    let paragraph = createElement("p");
+    let textNode = createTextNode(sentence);
 
+    paragraph.appendChild(textNode);
+    parentElement.appendChild(paragraph);
+}
+// Fetching elements
 let sentenceItemInput = fetchElementById("sentenceItemInput");
 let sentenceAmountInput = fetchElementById("sentenceNumberInput");
 
-let insertedItemForSentence = fetchInputValue(sentenceItemInput);
-let selectedAmountForSentence = fetchInputValue(sentenceAmountInput);
+// Fetching values
+let itemForSentence = fetchInputValue(sentenceItemInput);
+let amountForSentence = fetchInputValue(sentenceAmountInput);
+
+// Creating sentence
+let sentence = createSentence(itemForSentence, amountForSentence);
+
+// Printing sentence
+printSentence(sentence);
